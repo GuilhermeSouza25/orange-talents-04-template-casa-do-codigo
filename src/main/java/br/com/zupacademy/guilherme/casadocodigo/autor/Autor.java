@@ -21,11 +21,11 @@ public class Autor {
 	private String email;
 	@NotBlank @Size(max = 400)
 	private String descricao;
+	@SuppressWarnings("unused")
 	private LocalDateTime dataCriacao = LocalDateTime.now();
 	
 	@Deprecated
-	public Autor() {
-	}
+	public Autor() {}
 	
 	public Autor(
 			@NotBlank String nome, 
