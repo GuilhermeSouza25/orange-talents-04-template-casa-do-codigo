@@ -42,11 +42,4 @@ public class AutorRequest {
 	public Autor converter() {
 		return new Autor(this.nome, this.email, this.descricao);
 	}
-
-
-	public void abate(int quantidade) {
-		System.out.println(quantidade);
-		
-	}
-
 }

@@ -23,6 +23,7 @@ public class Autor {
 	private String descricao;
 	private LocalDateTime dataCriacao = LocalDateTime.now();
 	
+	@Deprecated
 	public Autor() {
 	}
 	

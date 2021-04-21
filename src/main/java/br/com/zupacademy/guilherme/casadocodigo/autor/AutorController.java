@@ -4,6 +4,8 @@ import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +16,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class AutorController {
 	
 	AutorRepository autorRepository;
+	EmailDuplicadoValidator emailValidator;
 	
-	public AutorController(AutorRepository autorRepository) {
+	public AutorController(
+			AutorRepository autorRepository,
+			EmailDuplicadoValidator emailValidator) {
 		this.autorRepository = autorRepository;
+		this.emailValidator = emailValidator;
+	}
+	
+	@InitBinder
+	public void init(WebDataBinder binder) {
+	
+		binder.addValidators(emailValidator);
 	}
 	
 	@PostMapping
@@ -29,9 +41,4 @@ public class AutorController {
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	
-	@PostMapping(value ="/quantidade")
-	public void fecha(int quantidade) {
-		//AutorRequest autor = new AutorRequest("nome", "email", "descricao");
-		//autor.abate(quantidade);
-	}
 }
