@@ -16,20 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class AutorController {
 	
 	AutorRepository autorRepository;
-	EmailDuplicadoValidator emailValidator;
 	
-	public AutorController(
-			AutorRepository autorRepository,
-			EmailDuplicadoValidator emailValidator) {
+	
+	public AutorController(AutorRepository autorRepository) {
 		this.autorRepository = autorRepository;
-		this.emailValidator = emailValidator;
 	}
 	
-	@InitBinder
-	public void init(WebDataBinder binder) {
-	
-		binder.addValidators(emailValidator);
-	}
+//	@InitBinder
+//	public void init(WebDataBinder binder) {
+//	
+//		binder.addValidators(emailValidator);
+//	}
 	
 	@PostMapping
 	public ResponseEntity<?> cadastrar(

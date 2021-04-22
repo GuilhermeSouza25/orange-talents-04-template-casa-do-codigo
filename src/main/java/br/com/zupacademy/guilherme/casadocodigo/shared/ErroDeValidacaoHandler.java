@@ -1,4 +1,4 @@
-package br.com.zupacademy.guilherme.casadocodigo.config;
+package br.com.zupacademy.guilherme.casadocodigo.shared;
 
 import java.util.ArrayList;
 import java.util.List;

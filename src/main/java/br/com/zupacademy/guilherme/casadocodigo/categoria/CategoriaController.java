@@ -16,20 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class CategoriaController {
 	
 	CategoriaRepository categoriaRepository;
-	NomeCategoriaDuplicadoValidator nomeCategoriaDuplicadoValidator;
+	
 	
 	public CategoriaController(
-			CategoriaRepository categoriaRepository,
-			NomeCategoriaDuplicadoValidator nomeCategoriaDuplicadoValidator) {
+			CategoriaRepository categoriaRepository) {
 		this.categoriaRepository = categoriaRepository;
-		this.nomeCategoriaDuplicadoValidator = nomeCategoriaDuplicadoValidator;
 	}
 	
-	@InitBinder
-	public void init(WebDataBinder binder) {
-	
-		binder.addValidators(nomeCategoriaDuplicadoValidator);
-	}
+//	@InitBinder
+//	public void init(WebDataBinder binder) {
+//	
+//		binder.addValidators(nomeCategoriaDuplicadoValidator);
+//	}
 	
 	@PostMapping
 	public ResponseEntity<?> cadastrar(
