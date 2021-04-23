@@ -10,7 +10,6 @@ public class CategoriaRequest {
 	@UniqueValue(domainClass = Categoria.class, fieldName = "nome")
 	private String nome;
 	
-	@Deprecated
 	public CategoriaRequest() {}
 	
 	public CategoriaRequest(
