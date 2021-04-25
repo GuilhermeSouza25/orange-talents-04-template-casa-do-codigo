@@ -2,6 +2,10 @@ package br.com.zupacademy.guilherme.casadocodigo.shared;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -32,6 +36,23 @@ public class ErroDeValidacaoHandler {
 			String mensagem = messageSource.getMessage(e, LocaleContextHolder.getLocale());
 			ErroFormulario erroFormulario = new ErroFormulario(e.getField(), mensagem);
 			listaErros.add(erroFormulario);
+		});
+		
+		return listaErros;
+	}
+	
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(ConstraintViolationException.class) 
+	public List<Erro> handle(ConstraintViolationException exception) {
+		
+		List<Erro> listaErros = new ArrayList<>();
+		
+		Set<ConstraintViolation<?>> constraintViolations = exception.getConstraintViolations();
+		
+		constraintViolations.forEach(c -> {
+			
+			Erro erro = new Erro(c.getMessage());
+			listaErros.add(erro);
 		});
 		
 		return listaErros;

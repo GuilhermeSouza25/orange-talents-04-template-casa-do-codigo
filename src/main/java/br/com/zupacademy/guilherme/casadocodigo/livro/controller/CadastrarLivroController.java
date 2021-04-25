@@ -1,4 +1,4 @@
-package br.com.zupacademy.guilherme.casadocodigo.livro;
+package br.com.zupacademy.guilherme.casadocodigo.livro.controller;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,9 +12,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.zupacademy.guilherme.casadocodigo.livro.Livro;
+import br.com.zupacademy.guilherme.casadocodigo.livro.LivroRepository;
+import br.com.zupacademy.guilherme.casadocodigo.livro.LivroRequest;
+
 @RestController
 @RequestMapping("/api/livro")
-public class LivroController {
+public class CadastrarLivroController {
 	
 	LivroRepository livroRepository;
 	
@@ -22,7 +26,7 @@ public class LivroController {
 	EntityManager manager;
 	
 	
-	public LivroController(
+	public CadastrarLivroController(
 			LivroRepository livroRepository) {
 		this.livroRepository = livroRepository;
 	}
