@@ -33,7 +33,7 @@ public class CategoriaController {
 		
 		Categoria categoria = categoriaRequest.converter();
 		categoriaRepository.save(categoria);
-		
+
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	
