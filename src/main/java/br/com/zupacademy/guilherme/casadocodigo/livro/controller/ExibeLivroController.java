@@ -17,7 +17,7 @@ import br.com.zupacademy.guilherme.casadocodigo.livro.response.LivroListaRespons
 @RestController
 @Validated
 @RequestMapping("/api/livro")
-public class ListarLivroController {
+public class ExibeLivroController {
 	
 	@PersistenceContext
 	EntityManager manager;

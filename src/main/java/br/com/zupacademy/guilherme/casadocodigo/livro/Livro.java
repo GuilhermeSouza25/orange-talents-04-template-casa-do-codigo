@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,7 +31,6 @@ public class Livro {
 	@Size(max = 500)
 	private String resumo;
 	
-	@SuppressWarnings("unused")
 	private String sumario;
 	
 	@NotNull
@@ -48,7 +48,7 @@ public class Livro {
 	private LocalDate dataPublicao;
 	
 	@NotNull
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Categoria categoria;
 	
 	@NotNull
@@ -79,5 +79,29 @@ public class Livro {
 	
 	public String getTitulo() {
 		return titulo;
+	}
+
+	public String getResumo() {
+		return resumo;
+	}
+	
+	public String getSumario() {
+		return sumario;
+	}
+	
+	public BigDecimal getPreco() {
+		return preco;
+	}
+	
+	public Integer getPaginas() {
+		return paginas;
+	}
+	
+	public String getIsbn() {
+		return isbn;
+	}
+	
+	public Autor getAutor() {
+		return autor;
 	}
 }
