@@ -2,6 +2,7 @@ package br.com.zupacademy.guilherme.casadocodigo.livro;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -103,5 +104,9 @@ public class Livro {
 	
 	public Autor getAutor() {
 		return autor;
+	}
+
+	public String formataData(String pattern) {
+		return this.dataPublicao.format(DateTimeFormatter.ofPattern(pattern));
 	}
 }

@@ -12,18 +12,18 @@ public class DetalheLivroResponse {
 	private BigDecimal preco;
 	private Integer paginas;
 	private String isbn;
-	private String nomeAutor;
-	private String descricaoAutor;
+	private DetalheAutorLivroResponse autor;
+	private String dataPublicao;
 
 	public DetalheLivroResponse(Livro livro) {
+		this.autor = new DetalheAutorLivroResponse(livro.getAutor());
 		this.titulo = livro.getTitulo();
 		this.resumo = livro.getResumo();
 		this.sumario = livro.getSumario();
 		this.preco = livro.getPreco();
 		this.paginas = livro.getPaginas();
 		this.isbn = livro.getIsbn();
-		this.nomeAutor = livro.getAutor().getNome();
-		this.descricaoAutor = livro.getAutor().getDescricao();
+		this.dataPublicao = livro.formataData("dd/MM/yyyy");
 	}
 
 	public String getTitulo() {
@@ -50,12 +50,12 @@ public class DetalheLivroResponse {
 		return isbn;
 	}
 
-	public String getNomeAutor() {
-		return nomeAutor;
+	public DetalheAutorLivroResponse getAutor() {
+		return autor;
 	}
-
-	public String getDescricaoAutor() {
-		return descricaoAutor;
+	
+	public String getDataPublicao() {
+		return dataPublicao;
 	}
 
 }
