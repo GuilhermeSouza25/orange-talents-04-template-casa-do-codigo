@@ -1,6 +1,7 @@
 package br.com.zupacademy.guilherme.casadocodigo.pais;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,12 +17,21 @@ public class Estado {
 	@NotBlank
 	private String nome;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Pais pais;
 	
+	public Estado() {}
 	
 	public Estado(String nome, Pais pais) {
 		this.nome = nome;
 		this.pais = pais;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public Pais getPais() {
+		return pais;
 	}
 }
